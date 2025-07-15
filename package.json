@@ -1,0 +1,20 @@
+{
+  "name": "dockhub",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quentin-bmh/DockHub.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quentin-bmh/DockHub/issues"
+  },
+  "homepage": "https://github.com/quentin-bmh/DockHub#readme",
+  "description": ""
+}

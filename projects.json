@@ -1,0 +1,65 @@
+[
+  {
+    "id": "html2pdf",
+    "title": "HTML2PDF",
+    "description": "Convertisseur HTML vers PDF avec mise en page dynamique pour générer des documents imprimables.",
+    "image": "../assets/img/html2pdf.png",
+    "tags": ["Utilitaires"],
+    "stack": ["HTML", "JS", "PDFMake"],
+    "url": "https://dockhub.monsite.com/html2pdf"
+  },
+  {
+    "id": "img2link",
+    "title": "Image to Link",
+    "description": "Transforme des images locales en liens partagés automatiquement via hébergement.",
+    "image": "../assets/img/img2link.png",
+    "tags": ["Utilitaires"],
+    "stack": ["HTML", "JS", "File API"],
+    "url": "https://dockhub.monsite.com/img2link"
+  },
+  {
+    "id": "qr",
+    "title": "QR Code Generator",
+    "description": "Générateur de QR Code personnalisables à partir de texte ou d’URL.",
+    "image": "../assets/img/qr.png",
+    "tags": ["Utilitaires"],
+    "stack": ["HTML", "JS", "QR API"],
+    "url": "https://qr.montoulieu-quentin.com"
+  },
+  {
+    "id": "snake-ai",
+    "title": "Snake AI",
+    "description": "Un bot jouant à Snake avec une IA évolutive évitant les collisions.",
+    "image": "../assets/img/snakeAI.png",
+    "tags": ["Jeux", "IA"],
+    "stack": ["HTML", "JS", "Canvas"],
+    "url": "https://dockhub.monsite.com/snake-ai"
+  },
+  {
+    "id": "sudoku",
+    "title": "Sudoku Solver",
+    "description": "Résolveur automatique de Sudoku avec visualisation pas-à-pas de l’algorithme.",
+    "image": "../assets/img/sudoku.png",
+    "tags": ["Jeux", "IA"],
+    "stack": ["HTML", "JS", "Backtracking"],
+    "url": "https://sudoku.montoulieu-quentin.com"
+  },
+  {
+    "id": "todo",
+    "title": "To-Do List",
+    "description": "Gestionnaire de tâches simple et rapide avec sauvegarde locale automatique.",
+    "image": "../assets/img/todo.png",
+    "tags": ["Utilitaires"],
+    "stack": ["HTML", "JS", "LocalStorage"],
+    "url": "https://todo.montoulieu-quentin.com"
+  },
+  {
+    "id": "xlsx2bdd",
+    "title": "XLSX → BDD",
+    "description": "Convertisseur intelligent de fichiers Excel vers scripts SQL prêts à insérer en base de données.",
+    "image": "../assets/img/xlsx2bdd.png",
+    "tags": ["Études", "Utilitaires"],
+    "stack": ["HTML", "JS", "xlsx.js"],
+    "url": "https://dockhub.monsite.com/xlsx2bdd"
+  }
+]
