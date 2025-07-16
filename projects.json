@@ -15,7 +15,16 @@
     "image": "../assets/img/img2link.png",
     "tags": ["Utilitaires"],
     "stack": ["HTML", "JS", "File API"],
-    "url": "https://dockhub.monsite.com/img2link"
+    "url": "https://i2l.montoulieu-quentin.com/"
+  },
+  {
+    "id":"next",
+    "title": "NextCloud",
+    "description": "Instance NextCloud auto-hébergée pour le partage et stockage de fichiers.",
+    "image": "../assets/img/next.png",
+    "tags": ["Utilitaires", "Auto-hébergement"],
+    "stack": ["node.js", "HTML","CSS", "NextCloud"],
+    "url": "https://next.montoulieu-quentin.com"
   },
   {
     "id": "qr",
@@ -37,10 +46,10 @@
   },
   {
     "id": "sudoku",
-    "title": "Sudoku Solver",
-    "description": "Résolveur automatique de Sudoku avec visualisation pas-à-pas de l’algorithme.",
+    "title": "Sudoku Game",
+    "description": "Jeu Sudoku interactif avec génération aléatoire de grilles et aide à la résolution intégrée.",
     "image": "../assets/img/sudoku.png",
-    "tags": ["Jeux", "IA"],
+    "tags": ["Jeux"],
     "stack": ["HTML", "JS", "Backtracking"],
     "url": "https://sudoku.montoulieu-quentin.com"
   },
@@ -49,8 +58,8 @@
     "title": "To-Do List",
     "description": "Gestionnaire de tâches simple et rapide avec sauvegarde locale automatique.",
     "image": "../assets/img/todo.png",
-    "tags": ["Utilitaires"],
-    "stack": ["HTML", "JS", "LocalStorage"],
+    "tags": ["Études","Utilitaires"],
+    "stack": ["Node.JS", "PostgreSQL", "Micro-services"],
     "url": "https://todo.montoulieu-quentin.com"
   },
   {
