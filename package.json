@@ -16,5 +16,10 @@
     "url": "https://github.com/quentin-bmh/DockHub/issues"
   },
   "homepage": "https://github.com/quentin-bmh/DockHub#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "multer": "^2.0.1",
+    "nodemailer": "^7.0.5"
+  }
 }

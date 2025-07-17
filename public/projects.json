@@ -1,0 +1,79 @@
+[
+  {
+    "id": "img2link",
+    "title": "Image to Link",
+    "description": "Transforme des images locales en liens partagés automatiquement via hébergement.",
+    "image": "../assets/img/img2link.png",
+    "tags": ["Utilitaires"],
+    "stack": ["HTML", "JS", "File API"],
+    "url": "https://i2l.montoulieu-quentin.com/",
+    "github": "https://github.com/quentin-bmh/image-app.git",
+    "video": "https://youtube.com/..."
+  },
+  {
+    "id":"next",
+    "title": "NextCloud",
+    "description": "Instance NextCloud auto-hébergée pour le partage et stockage de fichiers.",
+    "image": "../assets/img/next.png",
+    "tags": ["Utilitaires", "Auto-hébergement"],
+    "stack": ["node.js", "HTML","CSS", "NextCloud"],
+    "url": "https://next.montoulieu-quentin.com",
+    "github": "https://github.com/ton-compte/todo",
+    "video": "https://youtube.com/..."
+  },
+  {
+    "id": "qr",
+    "title": "QR Code Generator",
+    "description": "Générateur de QR Code personnalisables à partir de texte ou d’URL.",
+    "image": "../assets/img/qr.png",
+    "tags": ["Utilitaires"],
+    "stack": ["HTML", "JS", "QR API"],
+    "url": "https://qr.montoulieu-quentin.com",
+    "github": "https://github.com/quentin-bmh/qr-code-app.git",
+    "video": "https://youtube.com/..."
+  },
+  {
+    "id": "snake-ai",
+    "title": "Snake AI",
+    "description": "Un bot jouant à Snake avec une IA évolutive évitant les collisions.",
+    "image": "../assets/img/snakeAI.png",
+    "tags": ["Jeux", "IA"],
+    "stack": ["HTML", "JS", "Canvas"],
+    "url": "https://dockhub.monsite.com/snake-ai",
+    "github": "https://github.com/quentin-bmh/snake_AI.git",
+    "video": "https://youtube.com/..."
+  },
+  {
+    "id": "sudoku",
+    "title": "Sudoku Game",
+    "description": "Jeu Sudoku interactif avec génération aléatoire de grilles et aide à la résolution intégrée.",
+    "image": "../assets/img/sudoku.png",
+    "tags": ["Jeux"],
+    "stack": ["HTML", "JS", "Backtracking"],
+    "url": "https://sudoku.montoulieu-quentin.com",
+    "github": "https://github.com/quentin-bmh/Sudoku.git",
+    "video": "https://youtube.com/..."
+  },
+  {
+    "id": "todo",
+    "title": "To-Do List",
+    "description": "Gestionnaire de tâches simple et rapide avec sauvegarde locale automatique.",
+    "image": "../assets/img/todo.png",
+    "tags": ["Études","Utilitaires"],
+    "stack": ["Node.JS", "PostgreSQL", "Micro-services"],
+    "url": "https://todo.montoulieu-quentin.com",
+    "github": "https://github.com/quentin-bmh/projetKub.git",
+    "video": "https://youtube.com/..."
+  },
+  {
+    "id": "xlsx2bdd",
+    "title": "XLSX → BDD",
+    "description": "Convertisseur intelligent de fichiers Excel vers scripts SQL prêts à insérer en base de données.",
+    "image": "../assets/img/xlsx2bdd.png",
+    "tags": ["Études", "Utilitaires"],
+    "stack": ["HTML", "JS", "xlsx.js"],
+    "url": "https://dockhub.monsite.com/xlsx2bdd",
+    "github": "https://github.com/quentin-bmh/excelToBDD.git",
+    "video": "https://youtube.com/..."
+  }
+]

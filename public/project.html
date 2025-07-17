@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Détail du projet</title>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch('projects.json')
+      .then(res => res.json())
+      .then(projects => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        const project = projects.find(p => p.id === id);
+        if (!project) {
+          document.getElementById('main').innerHTML = "<p>Projet introuvable.</p>";
+          return;
+        }
+
+        document.getElementById('title').textContent = project.title;
+        document.getElementById('description').textContent = project.description;
+        document.getElementById('image').src = project.image;
+
+        const tags = document.getElementById('tags');
+        project.tags.forEach(tag => {
+          const span = document.createElement('span');
+          span.className = 'bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full text-sm';
+          span.textContent = tag;
+          tags.appendChild(span);
+        });
+
+        const stack = document.getElementById('stack');
+        project.stack.forEach(tech => {
+          const span = document.createElement('span');
+          span.className = 'bg-gray-100 text-gray-800 px-2 py-0.5 rounded text-sm';
+          span.textContent = tech;
+          stack.appendChild(span);
+        });
+
+        document.getElementById('link').href = project.url;
+        document.getElementById('github').href = project.github || '#';
+        document.getElementById('github').classList.toggle('hidden', !project.github);
+      });
+  });
+</script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <div class="max-w-3xl mx-auto p-6" id="main">
+    <button onclick="window.history.back()" class="mb-6 text-blue-600 hover:underline">← Retour</button>
+    <h1 id="title" class="text-3xl font-bold mb-4"></h1>
+    <img id="image" class="rounded-xl shadow mb-4 w-full h-60 object-cover" src="" alt="Image projet" />
+    <p id="description" class="mb-4 text-gray-700"></p>
+
+    <div class="mb-4 flex flex-wrap gap-2" id="tags"></div>
+    <div class="mb-6 flex flex-wrap gap-2" id="stack"></div>
+
+    <div class="flex gap-4">
+      <a id="link" target="_blank"
+         class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition text-sm">🔗 Accéder au projet</a>
+      <a id="github" target="_blank"
+         class="px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-900 transition text-sm">💻 Voir le code</a>
+    </div>
+  </div>
+  <hr class="my-8"/>
+  <section class="max-w-3xl mx-auto p-4 bg-white rounded-lg shadow">
+    <h2 class="text-xl font-semibold mb-4">💡 Suggérer une fonctionnalité</h2>
+    <form id="suggestionForm" class="space-y-4">
+      <input type="hidden" name="projectId" value="" id="suggestionProjectId"/>
+      <textarea name="message" required
+        class="w-full h-32 border rounded-lg p-2 focus:outline-none focus:ring"
+        placeholder="Décrivez votre suggestion..."></textarea>
+      <div class="flex justify-between items-center">
+        <label class="inline-flex items-center space-x-2">
+          <span>📎 Ajouter un fichier</span>
+          <input type="file" name="attachment" id="attachmentInput" class="sr-only"/>
+        </label>
+        <button type="submit"
+          class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">
+          Envoyer la suggestion
+        </button>
+      </div>
+      <div id="suggestionMessage" class="text-sm"></div>
+    </form>
+  </section>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    document.getElementById('suggestionProjectId').value = id;
+    
+    const form = document.getElementById('suggestionForm');
+    const msgDiv = document.getElementById('suggestionMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msgDiv.textContent = 'Envoi en cours…';
+      const data = new FormData(form);
+      const res = await fetch('/send-suggestion', { method: 'POST', body: data });
+      const json = await res.json();
+      msgDiv.textContent = json.message;
+      if (json.success) form.reset();
+    });
+  });
+  </script>
+
+</body>
+</html>
