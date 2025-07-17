@@ -2,17 +2,18 @@ const express = require('express');
 const { upload } = require('./config/multerConfig');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
-
+const authRoutes = require('./routes/auth/auth');
 const app = express();
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/auth', authRoutes);
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'quentin.montoulieu@gmail.com',
-    pass: 'tqqo duiq yotx cbhi'
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIS_PWD
   }
 });
 
@@ -25,7 +26,7 @@ app.post('/send-suggestion', upload.single('attachment'), async (req, res) => {
 
     const mailOptions = {
       from: 'dockhubbot@gmail.com',
-      to: 'quentin.montoulieu@gmail.com',
+      to: process.env.MAIL_USER,
       subject: `Suggestion DockHub ➤ ${projectId}`,
       text: message,
       attachments: req.file ? [{
