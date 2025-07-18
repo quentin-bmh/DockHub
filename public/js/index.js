@@ -34,18 +34,25 @@ document.addEventListener('DOMContentLoaded', () => {
     userMenu.classList.add('hidden');
   }
 
-  profileBtn.addEventListener('click', () => {
-    dropdown.classList.toggle('hidden');
-  });
+  if (profileBtn) {
+    profileBtn.addEventListener('click', () => {
+      dropdown.classList.toggle('hidden');
+    });
+  }
 
-  logoutBtn.addEventListener('click', () => {
-    localStorage.removeItem('token');
-    window.location.reload();
-  });
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.removeItem('token');
+      window.location.reload();
+    });
+  }
 
-  document.addEventListener('click', (e) => {
-    if (!userMenu.contains(e.target) && !dropdown.classList.contains('hidden')) {
-      dropdown.classList.add('hidden');
-    }
-  });
+  if (userMenu && dropdown) {
+    document.addEventListener('click', (e) => {
+      if (!userMenu.contains(e.target) && !dropdown.classList.contains('hidden')) {
+        dropdown.classList.add('hidden');
+      }
+    });
+  }
+
 });

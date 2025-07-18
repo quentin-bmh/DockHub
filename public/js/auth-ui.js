@@ -38,7 +38,7 @@ function afficherConnecté(user) {
 
 
 function afficherNonConnecté() {
-  const menu = document.getElementById('userMenu');
+  const menu = document.getElementById('user-menu');
   menu.innerHTML = `
     <a href="/login.html">Connexion</a> /
     <a href="/signup.html">Inscription</a>
