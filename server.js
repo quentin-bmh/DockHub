@@ -10,7 +10,7 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api/auth', authRoutes);
+app.use('/auth', authRoutes);
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',

@@ -2,29 +2,32 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DockHub</title>
-  <script defer src="../js/main.js"></script>
-  <script src="/js/auth-ui.js" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <script defer src="/js/auth-ui.js"></script>
+  <script defer src="/js/profile.js"></script>
+  <script defer src="/js/index.js"></script>  <!-- nouveau fichier -->
 </head>
 <body class="bg-gray-50 text-gray-900">
-  <div class="absolute top-4 right-4 space-x-4">
+
+  <div id="auth-buttons" class="absolute top-4 right-4 space-x-4">
     <a href="/login.html" class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 text-sm">Se connecter</a>
     <a href="/signup.html" class="px-3 py-1 bg-gray-700 text-white rounded hover:bg-gray-800 text-sm">Créer un compte</a>
   </div>
-  <div id="user-menu" class="relative hidden">
-    <button id="profile-button" class="text-white px-4 py-2 bg-gray-800 rounded hover:bg-gray-700">
+
+  <div id="user-menu" class="absolute top-4 right-4 hidden relative">
+    <button id="profile-button" class="text-white px-4 py-2 bg-gray-800 rounded hover:bg-gray-700 focus:outline-none">
       👤 Mon compte
     </button>
-    <div id="dropdown-profile" class="absolute right-0 mt-2 w-48 bg-white rounded shadow-lg hidden z-10">
-      <div class="px-4 py-2 text-sm text-gray-800 border-b">Nom: <span id="profile-username"></span></div>
-      <div class="px-4 py-2 text-sm text-gray-800 border-b">Email: <span id="profile-email"></span></div>
-      <button id="logout-btn" class="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-gray-100">Déconnexion</button>
+    <div id="dropdown-profile" class="absolute right-0 mt-2 w-56 bg-white rounded shadow-lg hidden z-10">
+      <div class="px-4 py-2 text-sm text-gray-800 border-b">Nom : <span id="profile-username">...</span></div>
+      <div class="px-4 py-2 text-sm text-gray-800 border-b">Email : <span id="profile-email">...</span></div>
+      <button id="logout-btn" class="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-gray-100 focus:outline-none">Déconnexion</button>
     </div>
   </div>
 
-  <div class="max-w-6xl mx-auto px-4 py-8">
+  <main class="max-w-6xl mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-4">🚀 DockHub</h1>
     
     <input id="searchInput" type="text" placeholder="Rechercher un projet..."
@@ -35,6 +38,7 @@
     <div id="projectsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Les cartes projets seront injectées ici -->
     </div>
-  </div>
+  </main>
+  <script src="/js/main.js" defer></script>
 </body>
 </html>

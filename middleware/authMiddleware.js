@@ -1,15 +1,20 @@
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
-module.exports = function (req, res, next) {
+module.exports = (req, res, next) => {
   const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // format: Bearer <token>
 
-  if (!token) return res.status(401).json({ message: 'Token manquant' });
+  if (!authHeader) {
+    return res.status(401).json({ message: 'Token manquant' });
+  }
+
+  const token = authHeader.split(' ')[1];
+  if (!token) return res.status(401).json({ message: 'Token invalide' });
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET);
-    req.user = decoded; // stocker dans req.user pour utilisation dans getProfile
+    console.log("Token décodé :", decoded); // ✅ maintenant que decoded est défini
+    req.user = decoded;
     next();
   } catch (err) {
     return res.status(403).json({ message: 'Token invalide ou expiré' });

@@ -27,14 +27,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const user = data.user;
 
-    // Remplir les éléments du DOM
-    document.getElementById('profil-email').innerText = user.email || 'Email non disponible';
-    document.getElementById('profil-created').innerText = formatDate(user.created_at);
-    document.getElementById('profil-id').innerText = user.id;
+    // Remplir les éléments du DOM en vérifiant leur existence
+    const emailElem = document.getElementById('profil-email');
+    if (emailElem) emailElem.innerText = user.email || 'Email non disponible';
 
-    // Optionnel : afficher une section uniquement si connectée
-    document.getElementById('profil-section')?.classList.remove('hidden');
+    const createdElem = document.getElementById('profil-created');
+    if (createdElem) createdElem.innerText = formatDate(user.created_at);
 
+    const idElem = document.getElementById('profil-id');
+    if (idElem) idElem.innerText = user.id;
+
+    const sectionElem = document.getElementById('profil-section');
+    if (sectionElem) sectionElem.classList.remove('hidden');
   })
   .catch(err => {
     console.error('Erreur lors de la récupération du profil :', err);
@@ -50,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function formatDate(iso) {
+    if (!iso) return 'Date non disponible';
     const date = new Date(iso);
     return date.toLocaleDateString('fr-FR', {
       year: 'numeric', month: 'long', day: 'numeric',

@@ -68,7 +68,15 @@ module.exports = {
         { expiresIn: '1h' }
       );
 
-      res.json({ message: "Connexion réussie", token });
+      res.json({
+        message: "Connexion réussie",
+        token,
+        user: {
+          id: user.id,
+          email: user.email,
+          username: user.username
+        }
+      });
     } catch (error) {
       console.error("Erreur login:", error);
       res.status(500).json({ message: "Erreur serveur" });
@@ -76,12 +84,16 @@ module.exports = {
   },
   getProfile: async (req, res) => {
     try {
-        const userId = req.user.id;
-        const result = await pool.query("SELECT id, email, created_at FROM users WHERE id = $1", [userId]);
-        res.status(200).json({ success: true, user: result.rows[0] });
-      } catch (err) {
-        console.error("Erreur lors de la récupération du profil :", err);
-        res.status(500).json({ success: false, message: "Erreur serveur" });
-      }
+      const userId = req.user.userId;  // <-- ici userId au lieu de id
+      const result = await pool.query(
+        "SELECT id, email, created_at FROM users WHERE id = $1",
+        [userId]
+      );
+      res.status(200).json({ success: true, user: result.rows[0] });
+    } catch (err) {
+      console.error("Erreur lors de la récupération du profil :", err);
+      res.status(500).json({ success: false, message: "Erreur serveur" });
+    }
   }
+
 };
