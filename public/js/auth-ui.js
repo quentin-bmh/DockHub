@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');
 
   if (!token) {
-    console.log('Aucun token trouvé');
+    // console.log('Aucun token trouvé');
     afficherNonConnecté();
     return;
   }
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return res.json();
     })
     .then(data => {
-      console.log("Profil reçu :", data);
+      // console.log("Profil reçu :", data);
       afficherConnecté(data.user);
     })
     .catch(err => {

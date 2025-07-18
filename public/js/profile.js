@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');
 
   if (!token) {
-    console.warn('Aucun token trouvé, utilisateur non connecté.');
+    // console.warn('Aucun token trouvé, utilisateur non connecté.');
     afficherMessage('Non connecté');
     return;
   }
