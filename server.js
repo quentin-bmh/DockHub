@@ -1,13 +1,16 @@
+require('dotenv').config();
 const express = require('express');
 const { upload } = require('./config/multerConfig');
 const nodemailer = require('nodemailer');
-const fs = require('fs');
 const authRoutes = require('./routes/auth/auth');
+const fs = require('fs');
 const app = express();
 app.use(express.static('public'));
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
