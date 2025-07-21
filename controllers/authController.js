@@ -86,7 +86,7 @@ module.exports = {
     try {
       const userId = req.user.userId;  // <-- ici userId au lieu de id
       const result = await pool.query(
-        "SELECT id, email, created_at FROM users WHERE id = $1",
+        "SELECT id, email, username, created_at FROM users WHERE id = $1",
         [userId]
       );
       res.status(200).json({ success: true, user: result.rows[0] });

@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(res => res.json())
     .then(data => {
+      console.log('Profile data:', data);
       if (data.success && data.user) {
         authButtons.classList.add('hidden');
         userMenu.classList.remove('hidden');

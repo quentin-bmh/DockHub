@@ -1,9 +1,39 @@
+let userFavorites = new Set(); // <-- déclaration globale
 let allProjects = [];
 let activeTags = new Set();
 
 const searchInput = document.getElementById('searchInput');
 const filtersContainer = document.getElementById('filters');
 const projectsContainer = document.getElementById('projectsContainer');
+
+
+// Dès que la page charge, on récupère les favoris si connecté
+document.addEventListener('DOMContentLoaded', async () => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    try {
+      const res = await fetch('/api/favorites', {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        // data.favorites devrait être un tableau d'IDs de projets favoris
+        userFavorites = new Set(data.favorites);
+      }
+    } catch (e) {
+      console.error('Erreur chargement favoris', e);
+    }
+  }
+
+  // Puis on charge les projets et on les affiche (ou si tu préfères, garde ton fetch projects.json ici)
+  const projectsRes = await fetch('projects.json');
+  const projects = await projectsRes.json();
+  allProjects = projects;
+  generateFilterButtons(projects);
+  renderProjects(projects);
+});
+
+
 
 fetch('projects.json')
   .then(response => response.json())
@@ -73,6 +103,33 @@ function createProjectCard(project) {
   title.className = 'text-lg font-semibold mb-1';
   title.textContent = project.title;
 
+  const favBtn = document.createElement('button');
+  favBtn.textContent = userFavorites.has(project.id) ? '⭐' : '☆';
+  favBtn.onclick = async (e) => {
+    e.stopPropagation();
+
+    const token = localStorage.getItem('token');
+    if (!token) {
+      alert('Connectez-vous pour gérer vos favoris.');
+      return;
+    }
+
+    if (userFavorites.has(project.id)) {
+      await fetch(`/api/favorites/${project.id}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      userFavorites.delete(project.id);
+      favBtn.textContent = '☆';
+    } else {
+      await fetch(`/api/favorites/${project.id}`, {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      userFavorites.add(project.id);
+      favBtn.textContent = '⭐';
+    }
+  };
   const description = document.createElement('p');
   description.className = 'text-sm text-gray-600 mb-3 line-clamp-3';
   description.textContent = project.description;

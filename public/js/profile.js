@@ -26,10 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const user = data.user;
+    console.log('User profile:', user);
+    
+    const usernameElem = document.getElementById('profile-username');
+    if (usernameElem) usernameElem.innerText = user.username || 'Nom non disponible';
 
-    // Remplir les éléments du DOM en vérifiant leur existence
-    const emailElem = document.getElementById('profil-email');
+    const emailElem = document.getElementById('profile-email');
     if (emailElem) emailElem.innerText = user.email || 'Email non disponible';
+
 
     const createdElem = document.getElementById('profil-created');
     if (createdElem) createdElem.innerText = formatDate(user.created_at);
